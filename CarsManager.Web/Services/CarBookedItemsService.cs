@@ -32,11 +32,10 @@ public class CarBookedItemsService(IFlurlClient flurlClient, ILogger<CarReservat
 
             var response = await _flurlClient.Request(Endpoints.Booked_Car_Items)
                                              .GetJsonAsync<List<CarBookedItemDto>>();
-                                              //.GetJsonAsync<GetBookedCarItemsDto>();
 
             //var carsBookedItems = response.Response.CarBookedItems.Select(item => item.ToCarsBookedItemViewModel()).ToList();
-            var items = response.ToList().Select(item => item.ToCarsBookedItemViewModel()).ToList();
-            return items;
+            var carsBookedItems = response.ToList().Select(item => item.ToCarsBookedItemViewModel()).ToList();
+            return carsBookedItems;
         }
         catch (FlurlHttpException ex)
         {

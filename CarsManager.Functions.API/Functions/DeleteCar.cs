@@ -32,7 +32,6 @@ public class DeleteCar
     [Function("DeleteCarDetailsItem")]
     [OpenApiOperation(operationId: "remove-car-details", "Delete Car", Summary = "Remove Car Details", Description = "This removes the car details.", Visibility = OpenApiVisibilityType.Important)]
     [OpenApiParameter(name: "id", In = ParameterLocation.Path, Required = true, Type = typeof(int), Description = "Id of car to be deleted.")]
-    [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(string), Required = true, Description = "Parameters")]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Description = "OK response")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.InternalServerError, Summary = "Internal Server Error", Description = "Something went wrong")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.BadRequest, Summary = "Bad Request", Description = "Input data is incorrect")]

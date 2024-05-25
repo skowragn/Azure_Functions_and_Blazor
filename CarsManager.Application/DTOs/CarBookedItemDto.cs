@@ -11,7 +11,7 @@ public class CarBookedItemDto
     public int Quantity { get; set; }
 
     [JsonProperty("car")]
-    public CarDetailsDto Car { get; set; } = new CarDetailsDto();
+    public CarDetailsDto Car { get; set; } = null!;
 
     [JsonProperty("totalPrice")]
     public decimal TotalPrice { get; set; }

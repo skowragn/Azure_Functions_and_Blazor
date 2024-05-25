@@ -29,6 +29,6 @@ public class CarDetailsDto
     [JsonProperty("currency")]
     public string Currency { get; set; } = null!;
 
-    [JsonProperty("image")]
+    [JsonProperty("imageUrl")]
     public string ImageUrl { get; set; } = null!;
 }
