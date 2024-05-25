@@ -1,0 +1,38 @@
+﻿
+<MudNavMenu Rounded="true" Margin=Margin.Normal Class="pa-2" Color=Color.Success>
+    
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.InsertEmoticon">Home</MudNavLink>
+
+    <MudNavLink Href="Reservations" Icon="@Icons.Material.Filled.Inventory">Reservations</MudNavLink>
+    
+    <MudNavLink Href="cars" Icon="@Icons.Material.Filled.ProductionQuantityLimits">Cars</MudNavLink>
+    
+    <MudNavLink Href="BookedCarCart" Icon="@Icons.Material.Filled.CarRental">
+        <MudBadge Color="Color.Tertiary" Overlap="true" Bordered="true" Content="@_count" Origin="Origin.CenterRight" Class="mud-width-full">
+            Booked Car Cart
+        </MudBadge>
+    </MudNavLink>
+
+</MudNavMenu>
+
+@code {
+    int _count = 0;
+
+    [Inject]
+    public ComponentStateChangedObserver Observer { get; set; } = null!;
+
+    
+    protected override async Task OnInitializedAsync()
+    {
+        Observer.OnStateChanged += UpdateCountAsync;
+
+        await UpdateCountAsync();
+    }
+
+    Task UpdateCountAsync() =>
+        InvokeAsync(async () =>
+        {
+            //_count = await Mediator.Send(new GetCarsCountQuery());
+            StateHasChanged();
+        });
+}

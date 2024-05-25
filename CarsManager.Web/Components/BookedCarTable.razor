@@ -1,0 +1,66 @@
+@using CarsManager.Domain.Entities;
+@using CarsManager.Web.Extensions
+<MudStack>
+    <MudToolBar DisableGutters="true">
+        <MudText Typo="Typo.h4">@Title</MudText>
+        <MudSpacer />
+        <MudPaper Outlined="true" Class="flex-grow-1 pb-2 pl-3">
+            <MudTextField @bind-Value="_filter" Placeholder="Search cars" Adornment="Adornment.Start"
+                AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-n2" DisableUnderLine="true">
+            </MudTextField>
+        </MudPaper>
+    </MudToolBar>
+    <MudTable Items=@Cars Hover="true" Breakpoint="Breakpoint.Sm" AllowUnsorted=true
+        Context="car" Dense=true FixedHeader=true RowsPerPage=10 Filter=OnFilter SortLabel="Sort By" Outlined="true">
+        <HeaderContent>
+            <MudTh>Cars</MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Name))>
+                    Name
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Model))>
+                    Model
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Engine))>
+                    Engine
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Description))>
+                    Description
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Price))>
+                    Price
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Currency))>
+                    Currency
+                </MudTableSortLabel>
+            </MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>
+                <MudFab Disabled=@(IsInCart?.Invoke(car) ?? false) Size=Size.Small
+                    Color=Color.Primary Icon=@Icons.Material.Filled.AddCard
+                        OnClick=@(async _ => await AddToCartAsync(car.UserId)) />
+            </MudTd>
+            <MudTd DataLabel="Name">@car.Name</MudTd>
+            <MudTd DataLabel="Name">@car.Model</MudTd>
+            <MudTd DataLabel="Name">@car.Engine</MudTd>
+            <MudTd DataLabel="Description">@car.Description</MudTd>
+            <MudTd DataLabel="Price">@car.Price.ToString("C2")</MudTd>
+            <MudTd DataLabel="Price">@car.Currency</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudStack>
+

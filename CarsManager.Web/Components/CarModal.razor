@@ -1,0 +1,43 @@
+@using CarsManager.Domain
+@using CarsManager.Web.Extensions
+@using CarsManager.Domain.Entities
+
+<MudDialog>
+    <DialogContent>
+        <MudForm @ref="_form" Model=@Cars autocomplete="off">
+            <MudTextField Label="Name" HelperText="Cars name"
+                          @bind-Value="Cars.Name" For="@(() => Cars.Name)" autocomplete="off" />
+            <MudTextField Label="Description" HelperText="Cars description"
+                          @bind-Value="Cars.Description" For="@(() => Cars.Description)" autocomplete="off" />
+            <MudSelect T="CarCategoryEnum" Label="Category" Variant=Variant.Text AnchorOrigin=Origin.BottomCenter>
+                @foreach (var category in Enum.GetValues<CarCategoryEnum>())
+                {
+                    <MudSelectItem T="CarCategoryEnum" Value=@category />
+                }
+            </MudSelect>
+            <MudNumericField @bind-Value=Cars.Model Label="Model" Variant="Variant.Text" />
+            <MudNumericField @bind-Value=Cars.Engine Label="Engine" Variant="Variant.Text" />
+            <MudNumericField @bind-Value=Cars.Price Label="Price" Variant="Variant.Text" />
+            <MudNumericField @bind-Value=Cars.Currency Label="Currency" Variant="Variant.Text" />
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick=@Close Color=Color.Secondary Variant=Variant.Filled
+                   Size=Size.Large Disabled=@_isSaving>Cancel</MudButton>
+        <MudButton StartIcon=@Icons.Material.Filled.Save
+                   Color=Color.Primary Size=Size.Large Variant=Variant.Filled
+                   OnClick=@Save Disabled=@_isSaving>
+            @if (_isSaving)
+            {
+                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                <MudText Class="ms-2">Saving</MudText>
+            }
+            else
+            {
+                <MudText>Save</MudText>
+            }
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+

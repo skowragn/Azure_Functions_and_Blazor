@@ -1,0 +1,26 @@
+@using CarsManager.Domain.Entities
+<MudDivider/>
+<MudStack Row="true" Spacing="6">
+    <MudImage Src="@CarsBookedItem.Car.ImageUrl" Width="192" Height="192" Class="rounded" />
+    <MudGrid>
+        <MudItem xs="6">
+            <MudText Typo="Typo.subtitle1"><b>@CarsBookedItem.Car.Name</b></MudText>
+            <MudText Typo="Typo.body2">@CarsBookedItem.Car.Description</MudText>
+            <MudText Typo="Typo.body2">@CarsBookedItem.Car.Model</MudText>
+            <MudText Typo="Typo.body2">@CarsBookedItem.Car.Engine</MudText>
+        </MudItem>
+        <MudItem xs="2">
+            <MudNumericField Variant=Variant.Outlined Margin="Margin.Dense"
+                             Min="1" Max="@CarsBookedItem.Quantity" T="int" Value="_desiredQuantity" ValueChanged="SaveOnUpdateAsync" />
+        </MudItem>
+        <MudItem xs="4">
+            <MudStack AlignItems="AlignItems.End" Justify="Justify.SpaceBetween" Class="mud-height-full">
+                <MudText Typo="Typo.subtitle1">
+                    <b>@CarsBookedItem.Car.Price.ToString("C2")</b>
+                </MudText>
+                <MudButton OnClick=OnRemoveAsync Color="Color.Primary" Size="Size.Small">Remove</MudButton>
+            </MudStack>
+        </MudItem>
+    </MudGrid>
+</MudStack>
+

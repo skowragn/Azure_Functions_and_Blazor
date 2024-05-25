@@ -1,0 +1,59 @@
+@using CarsManager.Web.Model
+@using CarsManager.Web.Extensions
+@using CarsManager.Web.Components
+
+<MudStack>
+    <MudToolBar DisableGutters="true">
+        <MudText Typo="Typo.h4">@Title</MudText>
+        <MudSpacer />
+        @ChildContent
+        <MudPaper Outlined="true" Class="flex-grow-1 pb-2 pl-3">
+            <MudTextField @bind-Value="_filter" Placeholder="Search cars" Adornment="Adornment.Start"
+                AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-n2" DisableUnderLine="true">
+            </MudTextField>
+        </MudPaper>
+    </MudToolBar>
+    <MudTable Items=@Cars Hover="true" Breakpoint="Breakpoint.Sm" AllowUnsorted=true Filter=OnFilter
+              CanCancelEdit=true Context="car" Dense=true FixedHeader=true RowsPerPage=10 RowEditCommit=OnEdit
+              RowEditPreview=BackupItem RowEditCancel=RevertEditChanges ReadOnly=false SortLabel="Sort By"
+              CancelEditTooltip="Discard changes..." CommitEditTooltip="Save changes..." Outlined="true"
+              IsEditRowSwitchingBlocked=true>
+        <HeaderContent>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Name))>
+                    Name
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Description))>
+                    Description
+                </MudTableSortLabel>
+            </MudTh>
+            <MudTh>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Price))>
+                    Price
+                </MudTableSortLabel>
+            </MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@car.Name</MudTd>
+            <MudTd DataLabel="Description">@car.Description</MudTd>
+            <MudTd DataLabel="Price">@car.Price.ToString("C2")</MudTd>
+        </RowTemplate>
+        <RowEditingTemplate>
+            <MudTd DataLabel="Name">
+                <MudTextField @bind-Value=@car.Name Required />
+            </MudTd>
+            <MudTd DataLabel="Description">
+                <MudTextField @bind-Value=@car.Description Required />
+            </MudTd>
+            <MudTd DataLabel="Price">
+                <MudNumericField T="decimal" @bind-Value=@car.Price Required Min="0.01m" />
+            </MudTd>
+        </RowEditingTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudStack>
+
