@@ -1,7 +1,5 @@
-﻿using CarsManager.Application.DTOs;
+﻿using CarsManager.Application.DTO;
 using CarsManager.Web.Model;
-using CarsManager.Web.Mapper;
-using CarsManager.Application.DTOs.Request;
 
 namespace CarsManager.Web.Mapper;
 

@@ -1,6 +1,5 @@
 using CarsManager.Web.Services.Interfaces;
 using CarsManager.Web.Model;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace CarsManager.Web.Pages;
 

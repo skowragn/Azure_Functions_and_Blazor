@@ -1,4 +1,4 @@
-﻿using CarsManager.Application.DTOs;
+﻿using CarsManager.Application.DTO;
 using CarsManager.Web.Model;
 using CarsManager.Web.Mapper;
 

@@ -11,9 +11,9 @@ using CarsManager.Application.Cqrs.Commands;
 using CarsManager.Application.Mapper;
 using Microsoft.Azure.Functions.Worker.Http;
 using Newtonsoft.Json;
-using CarsManager.Application.DTOs.Request;
-using CarsManager.Application.DTOs;
-using CarsManager.Application.DTOs.Response;
+using CarsManager.Application.DTO.Request;
+using CarsManager.Application.DTO;
+using CarsManager.Application.DTO.Response;
 using CarsManager.Domain.Entities;
 
 namespace CarsManager.Functions.API.Functions;

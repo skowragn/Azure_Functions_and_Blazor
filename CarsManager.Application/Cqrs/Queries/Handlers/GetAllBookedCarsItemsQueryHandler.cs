@@ -1,4 +1,4 @@
-﻿using CarsManager.Application.DTOs;
+﻿using CarsManager.Application.DTO;
 using CarsManager.Application.Interfaces;
 using CarsManager.Application.Mapper;
 using CarsManager.Application.Mappers;

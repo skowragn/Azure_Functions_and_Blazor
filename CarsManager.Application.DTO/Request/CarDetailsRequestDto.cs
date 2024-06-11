@@ -1,9 +1,8 @@
-﻿using CarsManager.Application.DTOs.Request;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace CarsManager.Application.DTOs;
+namespace CarsManager.Application.DTO.Request;
 
-public class CarDetailsDto
+public class CarDetailsRequestDto
 {
     [JsonProperty("name")]
     public string Name { get; set; } = null!;
@@ -29,6 +28,6 @@ public class CarDetailsDto
     [JsonProperty("currency")]
     public string Currency { get; set; } = null!;
 
-    [JsonProperty("imageUrl")]
+    [JsonProperty("image")]
     public string ImageUrl { get; set; } = null!;
 }

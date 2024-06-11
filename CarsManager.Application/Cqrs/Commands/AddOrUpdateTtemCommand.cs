@@ -1,4 +1,4 @@
-﻿using CarsManager.Application.DTOs;
+﻿using CarsManager.Application.DTO;
 using CarsManager.Domain.Entities;
 using MediatR;
 

@@ -8,7 +8,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.OpenApi.Models;
-using CarsManager.Application.DTOs;
+using CarsManager.Application.DTO;
 
 
 namespace CarsManager.Functions.API.Functions;

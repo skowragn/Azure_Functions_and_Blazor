@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using MediatR;
-using CarsManager.Application.DTOs;
+using CarsManager.Application.DTO;
 using CarsManager.Application.Cqrs.Queries;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.OpenApi.Models;
-using CarsManager.Application.DTOs.Response;
-using CarsManager.Application.DTOs.Request;
+using CarsManager.Application.DTO.Response;
+using CarsManager.Application.DTO.Request;
 using Newtonsoft.Json;
 using CarsManager.Domain.Entities;
 

@@ -1,5 +1,4 @@
 using CarsManager.Web.Services.Interfaces;
-using CarsManager.Domain.Entities;
 using CarsManager.Web.Model;
 
 namespace CarsManager.Web.Pages;

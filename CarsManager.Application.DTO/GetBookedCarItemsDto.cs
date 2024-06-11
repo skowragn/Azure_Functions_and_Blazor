@@ -1,8 +1,8 @@
-﻿using CarsManager.Application.DTOs.Request;
-using CarsManager.Application.DTOs.Response;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using CarsManager.Application.DTO.Request;
+using CarsManager.Application.DTO.Response;
 
-namespace CarsManager.Application.DTOs;
+namespace CarsManager.Application.DTO;
 
 public class GetBookedCarItemsDto
 {

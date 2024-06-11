@@ -1,4 +1,4 @@
-﻿namespace CarsManager.Web.Extensions;
+﻿namespace CarsManager.Application.Extensions;
 
 public static class Endpoints
 {

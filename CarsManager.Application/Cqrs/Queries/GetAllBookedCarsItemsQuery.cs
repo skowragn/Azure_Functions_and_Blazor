@@ -1,4 +1,4 @@
-﻿using CarsManager.Application.DTOs;
+﻿using CarsManager.Application.DTO;
 using MediatR;
 
 namespace CarsManager.Application.Cqrs.Queries;

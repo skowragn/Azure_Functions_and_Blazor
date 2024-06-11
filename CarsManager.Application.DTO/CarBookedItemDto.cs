@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CarsManager.Application.DTOs;
+namespace CarsManager.Application.DTO;
 
 public class CarBookedItemDto
 {

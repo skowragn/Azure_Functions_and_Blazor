@@ -1,7 +1,7 @@
 ﻿using CarsManager.Application.Interfaces;
 using CarsManager.Application.Mappers;
 using MediatR;
-using CarsManager.Application.DTOs;
+using CarsManager.Application.DTO;
 
 namespace CarsManager.Application.Cqrs.Queries.Handlers;
 

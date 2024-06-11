@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>CarsManager.Orleans.Application</RootNamespace>
+        <RootNamespace>CarsManager.Application</RootNamespace>
         <OutputType>Library</OutputType>
     </PropertyGroup>
 
@@ -22,6 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\CarsManager.Application.DTO\CarsManager.Application.DTO.csproj" />
         <ProjectReference Include="..\CarsManager.Domain\CarsManager.Domain.csproj" />
     </ItemGroup>
 

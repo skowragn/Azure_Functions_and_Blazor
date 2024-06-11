@@ -1,4 +1,4 @@
-@using CarsManager.Domain.Entities;
+@using CarsManager.Web.Model;
 @using CarsManager.Web.Extensions
 <MudStack>
     <MudToolBar DisableGutters="true">
@@ -15,32 +15,32 @@
         <HeaderContent>
             <MudTh>Cars</MudTh>
             <MudTh>
-                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Name))>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Name))>
                     Name
                 </MudTableSortLabel>
             </MudTh>
             <MudTh>
-                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Model))>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Model))>
                     Model
                 </MudTableSortLabel>
             </MudTh>
             <MudTh>
-                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Engine))>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Engine))>
                     Engine
                 </MudTableSortLabel>
             </MudTh>
             <MudTh>
-                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Description))>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Description))>
                     Description
                 </MudTableSortLabel>
             </MudTh>
             <MudTh>
-                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Price))>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Price))>
                     Price
                 </MudTableSortLabel>
             </MudTh>
             <MudTh>
-                <MudTableSortLabel SortBy=@(new Func<CarDetails, object>(p => p.Currency))>
+                <MudTableSortLabel SortBy=@(new Func<CarsDetailsViewModel, object>(p => p.Currency))>
                     Currency
                 </MudTableSortLabel>
             </MudTh>

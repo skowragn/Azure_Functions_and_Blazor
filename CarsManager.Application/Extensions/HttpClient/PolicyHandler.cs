@@ -1,4 +1,4 @@
-﻿namespace CarsManager.Application.HttpClient;
+﻿namespace CarsManager.Application.Extensions.HttpClient;
 
 public class PolicyHandler : DelegatingHandler
 {

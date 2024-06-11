@@ -2,7 +2,7 @@
 using Polly.Retry;
 using Polly.Timeout;
 
-namespace CarsManager.Application.HttpClient;
+namespace CarsManager.Application.Extensions.HttpClient;
 
 public static class Policies
 {

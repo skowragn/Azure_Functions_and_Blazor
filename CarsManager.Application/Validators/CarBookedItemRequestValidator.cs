@@ -1,4 +1,4 @@
-﻿using CarsManager.Application.DTOs.Request;
+﻿using CarsManager.Application.DTO.Request;
 using FluentValidation;
 
 namespace CarsManager.Application.Validators;

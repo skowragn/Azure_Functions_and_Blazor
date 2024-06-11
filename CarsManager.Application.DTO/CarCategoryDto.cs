@@ -1,4 +1,4 @@
-﻿namespace CarsManager.Application.DTOs.Request;
+﻿namespace CarsManager.Application.DTO;
 public class CarCategoryDto
 {
     public string? CategoryName { get; set; }

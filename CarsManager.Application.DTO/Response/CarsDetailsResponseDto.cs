@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CarsManager.Application.DTOs.Response;
+namespace CarsManager.Application.DTO.Response;
 
 public class CarsDetailsResponseDto
 {

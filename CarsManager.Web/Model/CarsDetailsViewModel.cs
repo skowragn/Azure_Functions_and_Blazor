@@ -1,6 +1,4 @@
-﻿using CarsManager.Domain.Entities;
-
-namespace CarsManager.Web.Model;
+﻿namespace CarsManager.Web.Model;
 public class CarsDetailsViewModel
 {
     public string UserId { get; set; } = null!;

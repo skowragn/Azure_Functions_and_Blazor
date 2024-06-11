@@ -1,6 +1,5 @@
-@using CarsManager.Domain
+@using CarsManager.Web.Model
 @using CarsManager.Web.Extensions
-@using CarsManager.Domain.Entities
 
 <MudDialog>
     <DialogContent>
@@ -9,10 +8,10 @@
                           @bind-Value="Cars.Name" For="@(() => Cars.Name)" autocomplete="off" />
             <MudTextField Label="Description" HelperText="Cars description"
                           @bind-Value="Cars.Description" For="@(() => Cars.Description)" autocomplete="off" />
-            <MudSelect T="CarCategoryEnum" Label="Category" Variant=Variant.Text AnchorOrigin=Origin.BottomCenter>
-                @foreach (var category in Enum.GetValues<CarCategoryEnum>())
+            <MudSelect T="CarCategoryEnumViewModel" Label="Category" Variant=Variant.Text AnchorOrigin=Origin.BottomCenter>
+                @foreach (var category in Enum.GetValues<CarCategoryEnumViewModel>())
                 {
-                    <MudSelectItem T="CarCategoryEnum" Value=@category />
+                    <MudSelectItem T="CarCategoryEnumViewModel" Value=@category />
                 }
             </MudSelect>
             <MudNumericField @bind-Value=Cars.Model Label="Model" Variant="Variant.Text" />

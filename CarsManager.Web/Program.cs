@@ -1,7 +1,7 @@
 using CarsManager.Web.Extensions;
+using CarsManager.Web.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddMudServices();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRazorPages();
@@ -12,7 +12,10 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<ComponentStateChangedObserver>();
 builder.Services.AddSingleton<ToastService>();
 
-builder.Services.AddCarReservationsServices();
+var config = builder.Configuration;
+builder.Services.Configure<WebConfiguration>(config.GetSection(nameof(WebConfiguration)));
+
+builder.Services.AddCarReservationsServices(config);
 
 builder.Services.AddSession(options =>
 {

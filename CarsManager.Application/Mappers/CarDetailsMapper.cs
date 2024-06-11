@@ -1,5 +1,5 @@
 ﻿using CarsManager.Domain.Entities;
-using CarsManager.Application.DTOs;
+using CarsManager.Application.DTO;
 using CarsManager.Application.Mapper;
 
 namespace CarsManager.Application.Mappers;

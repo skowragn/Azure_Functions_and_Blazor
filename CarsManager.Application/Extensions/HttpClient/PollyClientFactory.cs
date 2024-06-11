@@ -1,6 +1,6 @@
 ﻿using Flurl.Http.Configuration;
 
-namespace CarsManager.Application.HttpClient;
+namespace CarsManager.Application.Extensions.HttpClient;
 
 public class PollyClientFactory : DefaultHttpClientFactory
 {

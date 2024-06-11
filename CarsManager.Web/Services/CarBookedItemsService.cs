@@ -1,75 +1,41 @@
-﻿using CarsManager.Web.Extensions;
-using CarsManager.Web.Mapper;
+﻿using CarsManager.Web.Mapper;
 using CarsManager.Web.Model;
 using CarsManager.Web.Services.Interfaces;
-using Flurl.Http;
-using CarsManager.Application.DTOs;
+using CarsManager.Application.Services.Interfaces;
 
 namespace CarsManager.Web.Services;
 
-public class CarBookedItemsService(IFlurlClient flurlClient, ILogger<CarReservationsService> logger) : IBookedCarsItemsService
+public class CarBookedItemsService(ICarsDetailsAppService carDetailsAppService, IBookedCarsItemsAppService bookedCarsItemsService, 
+                                   ILogger<CarReservationsService> logger) : IBookedCarsItemsService
 {
-
-    private readonly IFlurlClient _flurlClient = flurlClient;
     private readonly ILogger _logger = logger;
+    private readonly ICarsDetailsAppService _carDetailsAppService = carDetailsAppService;
+    private readonly IBookedCarsItemsAppService _bookedCarsItemsService = bookedCarsItemsService;
 
     public Task<bool> AddOrUpdateItem(int quantity, CarsDetailsViewModel car)
     {
-        throw new NotImplementedException();
+        var carDetailsDto = car.ToCarDetailsDto();
+        return _carDetailsAppService.AddOrUpdateItem(quantity, carDetailsDto);
     }
 
-    public async Task EmptyCarsItem()
-    {
-
-    }
 
     public async Task<IEnumerable<CarsBookedItemViewModel>?> GetAllBookedCarsItems()
     {
-        try
+        var response = await _bookedCarsItemsService.GetAllBookedCarsItems();
+        if (response != null && response.Any())
         {
-            var json = await "http://localhost:7159/api/bookedcaritems".GetStringAsync();
-  
-
-            var response = await _flurlClient.Request(Endpoints.Booked_Car_Items)
-                                             .GetJsonAsync<List<CarBookedItemDto>>();
-
-            //var carsBookedItems = response.Response.CarBookedItems.Select(item => item.ToCarsBookedItemViewModel()).ToList();
-            var carsBookedItems = response.ToList().Select(item => item.ToCarsBookedItemViewModel()).ToList();
+            var carsBookedItems = response.Select(item => item.ToCarsBookedItemViewModel()).ToList();
             return carsBookedItems;
         }
-        catch (FlurlHttpException ex)
-        {
-            switch (ex.StatusCode)
-            {
-                default:
-                    _logger.LogInformation("API responded: {StatusCode}, {Message}.", ex.StatusCode, ex.Message);
-                    break;
-            }
-        }
-
         return [];
     }
     public Task<string> RemoveBookedCarsItem(string carNameItem, string userId)
     {
-        try
-        {
+        return _bookedCarsItemsService.RemoveBookedCarsItem(carNameItem, userId);
+    }
 
-            string endpoint = string.Format(Endpoints.Remove_Car, userId);
-            var response = _flurlClient.Request(endpoint).GetStringAsync();
-            _logger.LogInformation("{carNameItem} has been removed for the {userId} user.", carNameItem, userId );
-            return response;
-
-        }
-        catch (FlurlHttpException ex)
-        {
-            switch (ex.StatusCode)
-            {
-                default:
-                    _logger.LogInformation("API responded: {StatusCode}, {Message}.", ex.StatusCode, ex.Message);
-                    break;
-            }
-        }
-
-        return Task.FromResult(string.Empty);
+    public async Task EmptyCarsItem()
+    {
+        await _bookedCarsItemsService.EmptyCarsItem();
     }
 }

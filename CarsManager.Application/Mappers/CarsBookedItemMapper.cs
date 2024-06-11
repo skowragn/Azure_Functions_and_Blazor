@@ -1,6 +1,6 @@
 ﻿using CarsManager.Domain.Entities;
 using CarsManager.Application.Mappers;
-using CarsManager.Application.DTOs;
+using CarsManager.Application.DTO;
 
 
 namespace CarsManager.Application.Mapper;
