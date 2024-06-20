@@ -46,6 +46,33 @@ public class CarBookedItemsAppService(IFlurlClient flurlClient, ILogger<CarReser
 
         return [];
     }
+
+    public async Task<int> GetCarsCount()
+    {
+        try
+        {
+            var json = await "http://localhost:7159/api/bookedcaritems".GetStringAsync();
+
+
+            var response = await _flurlClient.Request(Endpoints.Booked_Car_Items)
+                                             .GetJsonAsync<List<CarBookedItemDto>>();
+
+            var carsBookedItems = response.ToList();
+            return carsBookedItems.Count;
+        }
+        catch (FlurlHttpException ex)
+        {
+            switch (ex.StatusCode)
+            {
+                default:
+                    _logger.LogInformation("API responded: {StatusCode}, {Message}.", ex.StatusCode, ex.Message);
+                    break;
+            }
+        }
+
+        return default;
+    }
+
     public Task<string> RemoveBookedCarsItem(string carNameItem, string userId)
     {
         try

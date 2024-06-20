@@ -18,6 +18,12 @@ public class CarBookedItemsService(ICarsDetailsAppService carDetailsAppService, 
         return _carDetailsAppService.AddOrUpdateItem(quantity, carDetailsDto);
     }
 
+    public async Task<int> GetCarsCount()
+    {
+        var response = await _bookedCarsItemsService.GetCarsCount();
+        return response;
+    }
+
 
     public async Task<IEnumerable<CarsBookedItemViewModel>?> GetAllBookedCarsItems()
     {

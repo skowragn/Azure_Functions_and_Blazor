@@ -7,5 +7,7 @@ public interface IBookedCarsItemsAppService
     Task<IEnumerable<CarBookedItemDto>?> GetAllBookedCarsItems();
     Task<string> RemoveBookedCarsItem(string carNameItem, string userId);
     Task<bool> AddOrUpdateItem(int quantity, CarDetailsDto car);
+
+    Task<int> GetCarsCount();
     Task EmptyCarsItem();
 }
